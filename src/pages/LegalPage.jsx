@@ -1,7 +1,7 @@
-import { useEffect } from 'react'
 import { ArrowUp, Mail, Phone } from 'lucide-react'
 import { SiteFooter } from '../components/SiteFooter.jsx'
 import { SiteHeader } from '../components/SiteHeader.jsx'
+import { siteSeo, usePageSeo } from '../seo.js'
 
 function ContactBlock() {
   return (
@@ -21,11 +21,7 @@ function LegalBlock({ block }) {
 }
 
 export function LegalPage({ document }) {
-  useEffect(() => {
-    const previousTitle = window.document.title
-    window.document.title = `${document.title} | ARCED Construction Group LTD`
-    return () => { window.document.title = previousTitle }
-  }, [document.title])
+  usePageSeo(document.title === 'Privacy Policy' ? siteSeo.privacy : siteSeo.terms)
 
   return (
     <>

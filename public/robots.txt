@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://arcedtile.ca/sitemap.xml
+Host: https://arcedtile.ca

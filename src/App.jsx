@@ -23,6 +23,7 @@ import { SiteFooter } from './components/SiteFooter.jsx'
 import { SiteHeader } from './components/SiteHeader.jsx'
 import { LegalPage } from './pages/LegalPage.jsx'
 import { privacyPolicy, termsOfUse } from './legalContent.js'
+import { siteSeo, usePageSeo } from './seo.js'
 
 const services = [
   { icon: Bath, title: 'Bathroom Tile Installation', copy: 'Complete bathroom tile work with clean transitions and carefully aligned finishes.' },
@@ -84,6 +85,8 @@ const faqs = [
   ['Do you offer a warranty?', 'Yes. Our tile installation is backed by a two-year workmanship warranty.'],
   ['How is pricing calculated?', 'Pricing is based on the project area, tile type and pattern, site condition, preparation, removal requirements and material scope. A site inspection helps us provide a transparent estimate.'],
 ]
+
+const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT || ''
 
 function SectionHeading({ eyebrow, title, copy, light = false }) {
   return (
@@ -294,11 +297,43 @@ function FAQ() {
 
 function Contact() {
   const [submitted, setSubmitted] = useState(false)
+  const [formStatus, setFormStatus] = useState('idle')
+  const [statusMessage, setStatusMessage] = useState('')
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault()
-    setSubmitted(true)
-    event.currentTarget.reset()
+    const form = event.currentTarget
+    setSubmitted(false)
+
+    if (!FORMSPREE_ENDPOINT) {
+      setFormStatus('error')
+      setStatusMessage('The estimate form is being connected. Please email arcedconstruction@outlook.com or call +1 431 338-5322.')
+      return
+    }
+
+    setFormStatus('loading')
+    setStatusMessage('')
+
+    const formData = new FormData(form)
+    formData.append('_subject', 'New tile estimate request from arcedtile.ca')
+    formData.append('website', 'arcedtile.ca')
+
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: formData,
+      })
+
+      if (!response.ok) throw new Error('Form submission failed')
+
+      setFormStatus('success')
+      setStatusMessage('Thank you. Your request has been sent to ARCED.')
+      form.reset()
+    } catch {
+      setFormStatus('error')
+      setStatusMessage('Something went wrong while sending your request. Please email arcedconstruction@outlook.com or call +1 431 338-5322.')
+    }
   }
 
   return (
@@ -315,7 +350,7 @@ function Contact() {
             <span><ShieldCheck aria-hidden="true" /><span><small>Peace of mind</small>Fully insured · 2-year warranty</span></span>
           </div>
         </div>
-        <form className="estimate-form" onSubmit={handleSubmit}>
+        <form className="estimate-form" onSubmit={handleSubmit} aria-busy={formStatus === 'loading'}>
           <div className="field-row">
             <label>Full Name<input name="name" autoComplete="name" required placeholder="Your full name" /></label>
             <label>Email<input type="email" name="email" autoComplete="email" required placeholder="you@example.com" /></label>
@@ -326,9 +361,11 @@ function Contact() {
           </div>
           <label>Message<textarea name="message" required rows="5" placeholder="Tell us about the space, tile and timeline you have in mind." /></label>
           <div className="form-footer">
-            <button className="button" type="submit">Send Request <ArrowRight aria-hidden="true" /></button>
+            <button className="button" type="submit" disabled={formStatus === 'loading'}>{formStatus === 'loading' ? 'Sending...' : 'Send Request'} <ArrowRight aria-hidden="true" /></button>
             <p>By submitting, you agree to be contacted about your project.</p>
           </div>
+          {formStatus === 'success' && <p className="form-success" role="status"><Check aria-hidden="true" /> {statusMessage}</p>}
+          {formStatus === 'error' && <p className="form-success form-error" role="alert">{statusMessage}</p>}
           {submitted && <p className="form-success" role="status"><Check aria-hidden="true" /> Thank you. Your request is ready to be connected to ARCED’s email or CRM.</p>}
         </form>
       </div>
@@ -336,18 +373,8 @@ function Contact() {
   )
 }
 
-export default function App() {
-  const path = window.location.pathname.replace(/\/+$/, '')
-
-  if (path === '/calculator') {
-    return <CalculatorPage />
-  }
-  if (path === '/privacy-policy') {
-    return <LegalPage document={privacyPolicy} />
-  }
-  if (path === '/terms-of-use') {
-    return <LegalPage document={termsOfUse} />
-  }
+function HomePage() {
+  usePageSeo(siteSeo.home)
 
   return (
     <>
@@ -365,4 +392,20 @@ export default function App() {
       <SiteFooter />
     </>
   )
+}
+
+export default function App() {
+  const path = window.location.pathname.replace(/\/+$/, '')
+
+  if (path === '/calculator') {
+    return <CalculatorPage />
+  }
+  if (path === '/privacy-policy') {
+    return <LegalPage document={privacyPolicy} />
+  }
+  if (path === '/terms-of-use') {
+    return <LegalPage document={termsOfUse} />
+  }
+
+  return <HomePage />
 }

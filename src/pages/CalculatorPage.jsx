@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { ArrowRight, Calculator, Check, Clock3, Info, Ruler, ShieldCheck } from 'lucide-react'
 import { SiteFooter } from '../components/SiteFooter.jsx'
 import { SiteHeader } from '../components/SiteHeader.jsx'
+import { siteSeo, usePageSeo } from '../seo.js'
 import {
   calculateEstimate,
   exampleEstimates,
@@ -21,25 +22,14 @@ const cad = new Intl.NumberFormat('en-CA', {
 const initialOptions = Object.fromEntries(optionalServices.map(({ id }) => [id, false]))
 
 export function CalculatorPage() {
+  usePageSeo(siteSeo.calculator)
+
   const [projectId, setProjectId] = useState('floor')
   const [tileId, setTileId] = useState('ceramic')
   const [squareFeet, setSquareFeet] = useState('100')
   const [selectedOptions, setSelectedOptions] = useState(initialOptions)
 
   const estimate = calculateEstimate({ projectId, tileId, squareFeet, selectedOptions })
-
-  useEffect(() => {
-    const previousTitle = document.title
-    const description = document.querySelector('meta[name="description"]')
-    const previousDescription = description?.getAttribute('content')
-    document.title = 'Tile Installation Cost Calculator Winnipeg | ARCED'
-    description?.setAttribute('content', 'Estimate tile installation costs in Winnipeg by project type, tile, square footage and optional preparation services.')
-
-    return () => {
-      document.title = previousTitle
-      if (previousDescription) description?.setAttribute('content', previousDescription)
-    }
-  }, [])
 
   function updateOption(id, checked) {
     setSelectedOptions((current) => ({ ...current, [id]: checked }))

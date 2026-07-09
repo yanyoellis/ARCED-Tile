@@ -42,6 +42,7 @@ p { line-height: 1.7; }
 
 .button { display: inline-flex; min-height: 54px; align-items: center; justify-content: center; gap: 13px; padding: 0 25px; border: 1px solid var(--burgundy); border-radius: 1px; background: var(--burgundy); color: #fff; font-weight: 700; font-size: .85rem; letter-spacing: .02em; cursor: pointer; transition: background .2s ease, border-color .2s ease, transform .2s ease; }
 .button:hover { background: var(--burgundy-dark); border-color: var(--burgundy-dark); transform: translateY(-2px); }
+.button:disabled { cursor: wait; opacity: .72; transform: none; }
 .button svg, .text-link svg { width: 17px; height: 17px; }
 .button--small { min-height: 45px; padding-inline: 18px; font-size: .78rem; }
 .text-link { display: inline-flex; align-items: center; gap: 9px; color: var(--burgundy); font-weight: 750; font-size: .88rem; }
@@ -191,6 +192,7 @@ p { line-height: 1.7; }
 .form-footer p { max-width: 230px; margin: 0; color: #8a847d; font-size: .68rem; }
 .form-success { display: flex; align-items: center; gap: 9px; margin: 24px 0 0; padding: 13px 15px; background: #f0f7ef; color: #2e5e2a; font-size: .78rem; }
 .form-success svg { width: 16px; flex: none; }
+.form-error { background: #fff1f0; color: #8c1f17; }
 
 .site-footer { padding-top: 76px; background: #1c1b1a; color: #fff; }
 .footer-main { display: grid; grid-template-columns: 1.7fr .6fr .8fr 1fr; gap: 6vw; padding-bottom: 65px; }
