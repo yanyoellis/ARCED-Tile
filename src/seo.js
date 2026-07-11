@@ -147,6 +147,7 @@ export const siteSeo = {
     description: privacyDescription,
     canonicalPath: '/privacy-policy',
     image: '/assets/arced-logo.png',
+    robots: 'noindex, follow',
     schema: [businessSchema, websiteSchema, pageSchema('/privacy-policy', 'Privacy Policy | ARCED Construction Group LTD', privacyDescription)],
   },
   terms: {
@@ -154,18 +155,19 @@ export const siteSeo = {
     description: termsDescription,
     canonicalPath: '/terms-of-use',
     image: '/assets/arced-logo.png',
+    robots: 'noindex, follow',
     schema: [businessSchema, websiteSchema, pageSchema('/terms-of-use', 'Terms of Use | ARCED Construction Group LTD', termsDescription)],
   },
 }
 
-export function usePageSeo({ title, description, canonicalPath, image, schema }) {
+export function usePageSeo({ title, description, canonicalPath, image, schema, robots = 'index, follow' }) {
   useEffect(() => {
     const canonical = absolute(canonicalPath)
     const imageUrl = absolute(image)
 
     document.title = title
     upsertMeta('name', 'description', description)
-    upsertMeta('name', 'robots', 'index, follow')
+    upsertMeta('name', 'robots', robots)
     upsertMeta('property', 'og:title', title)
     upsertMeta('property', 'og:description', description)
     upsertMeta('property', 'og:type', 'website')
@@ -179,5 +181,5 @@ export function usePageSeo({ title, description, canonicalPath, image, schema })
     upsertMeta('name', 'twitter:image', imageUrl)
     upsertCanonical(canonical)
     upsertJsonLd(schema)
-  }, [title, description, canonicalPath, image, schema])
+  }, [title, description, canonicalPath, image, schema, robots])
 }
