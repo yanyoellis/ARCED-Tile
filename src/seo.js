@@ -126,6 +126,7 @@ const homeDescription = 'Professional tile installation in Winnipeg for bathroom
 const calculatorDescription = 'Estimate tile installation costs in Winnipeg by project type, tile type, square footage and optional preparation services.'
 const privacyDescription = 'Privacy Policy for ARCED Construction Group LTD. and its Winnipeg tile installation website.'
 const termsDescription = 'Terms of Use for ARCED Construction Group LTD. and its Winnipeg tile installation website.'
+const reviewsAdminDescription = 'Private review moderation page for ARCED Construction Group LTD.'
 
 export const siteSeo = {
   home: {
@@ -157,6 +158,14 @@ export const siteSeo = {
     image: '/assets/arced-logo.png',
     robots: 'noindex, follow',
     schema: [businessSchema, websiteSchema, pageSchema('/terms-of-use', 'Terms of Use | ARCED Construction Group LTD', termsDescription)],
+  },
+  reviewsAdmin: {
+    title: 'Review Admin | ARCED Construction Group LTD',
+    description: reviewsAdminDescription,
+    canonicalPath: '/admin-reviews',
+    image: '/assets/arced-logo.png',
+    robots: 'noindex, nofollow',
+    schema: [pageSchema('/admin-reviews', 'Review Admin | ARCED Construction Group LTD', reviewsAdminDescription)],
   },
 }
 

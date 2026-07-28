@@ -15,13 +15,14 @@ import {
   ShieldCheck,
   Sparkles,
   SquareStack,
-  Star,
   Wrench,
 } from 'lucide-react'
 import { CalculatorPage } from './pages/CalculatorPage.jsx'
 import { SiteFooter } from './components/SiteFooter.jsx'
 import { SiteHeader } from './components/SiteHeader.jsx'
+import { ReviewsSection } from './components/ReviewsSection.jsx'
 import { LegalPage } from './pages/LegalPage.jsx'
+import { ReviewsAdminPage } from './pages/ReviewsAdminPage.jsx'
 import { privacyPolicy, termsOfUse } from './legalContent.js'
 import { siteSeo, usePageSeo } from './seo.js'
 
@@ -71,10 +72,15 @@ const projects = [
   { image: '/assets/project-commercial.webp', title: 'Commercial Floor Tile', copy: 'Durable large-format porcelain for a polished, high-traffic interior.' },
 ]
 
-const testimonials = [
-  ['The estimate was clear, the work area stayed organized, and the finished shower tile looks exceptionally clean.', 'M. K.', 'Winnipeg homeowner'],
-  ['We appreciated the attention to layout and the consistent communication throughout our kitchen project.', 'A. R.', 'Kitchen renovation client'],
-  ['The team delivered a professional finish and worked carefully around our business schedule.', 'D. S.', 'Commercial property client'],
+const reviewProjectOptions = [
+  'Bathroom tile installation',
+  'Kitchen tile installation',
+  'Backsplash installation',
+  'Floor tile installation',
+  'Wall tile installation',
+  'Shower tile installation',
+  'Tile repair or replacement',
+  'Commercial tile project',
 ]
 
 const faqs = [
@@ -254,21 +260,12 @@ function BeforeAfter() {
 
 function Testimonials() {
   return (
-    <section className="section testimonials" aria-labelledby="testimonials-title">
-      <div className="shell">
-        <SectionHeading eyebrow="Client experience" title="Work that earns trust" copy="Professional communication and careful workmanship matter just as much as the finished surface." />
-        <h2 id="testimonials-title" className="sr-only">Client testimonials</h2>
-        <div className="testimonial-grid">
-          {testimonials.map(([quote, name, role]) => (
-            <figure className="testimonial-card" key={name}>
-              <div className="stars" aria-label="5 out of 5 stars">{[1,2,3,4,5].map(n => <Star key={n} fill="currentColor" aria-hidden="true" />)}</div>
-              <blockquote>“{quote}”</blockquote>
-              <figcaption><strong>{name}</strong><span>{role}</span></figcaption>
-            </figure>
-          ))}
-        </div>
-      </div>
-    </section>
+    <ReviewsSection
+      title="Reviews from ARCED clients"
+      copy="Real client feedback from tile projects in Winnipeg. If ARCED completed work for you, you can leave a public review below."
+      formIntro="Share your experience with ARCED tile installation. Your name, rating, project type and review will be shown publicly."
+      projectOptions={reviewProjectOptions}
+    />
   )
 }
 
@@ -405,6 +402,9 @@ export default function App() {
   }
   if (path === '/terms-of-use') {
     return <LegalPage document={termsOfUse} />
+  }
+  if (path === '/admin-reviews') {
+    return <ReviewsAdminPage />
   }
 
   return <HomePage />

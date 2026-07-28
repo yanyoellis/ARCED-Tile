@@ -155,6 +155,60 @@ p { line-height: 1.7; }
 .testimonial-card figcaption strong { color: var(--burgundy); }
 .testimonial-card figcaption span { margin-top: 4px; color: var(--muted); }
 
+.live-reviews { background: linear-gradient(180deg, #fff 0%, #fbf8f3 100%); }
+.reviews-layout { display: grid; grid-template-columns: minmax(0, 1fr) 420px; align-items: start; gap: 34px; }
+.reviews-main .section-heading { margin-bottom: 36px; }
+.review-grid { grid-template-columns: repeat(2, 1fr); }
+.review-card { min-height: 300px; background: #fff; box-shadow: 0 16px 40px rgba(64,39,24,.06); }
+.review-card .stars { margin-bottom: 30px; }
+.review-card figcaption small { margin-top: 7px; color: #958b82; font-size: .66rem; font-weight: 600; letter-spacing: .03em; text-transform: uppercase; }
+.review-empty { display: grid; gap: 6px; min-height: 150px; place-content: center start; padding: 30px; border: 1px dashed #cfc4b8; background: #fff; color: var(--muted); }
+.review-empty strong { color: var(--burgundy); font-size: 1.05rem; }
+.review-empty span { font-size: .86rem; }
+.review-form { position: sticky; top: 118px; padding: 35px; border-top: 5px solid var(--gold); background: #fff; box-shadow: 0 25px 70px rgba(48,22,12,.13); }
+.review-form h3 { margin-bottom: 10px; color: var(--ink); font-size: 1.55rem; }
+.review-form > p:not(.eyebrow) { margin-bottom: 28px; color: var(--muted); font-size: .84rem; }
+.review-form label { display: block; margin-bottom: 22px; color: #3d3936; font-size: .72rem; font-weight: 750; letter-spacing: .04em; text-transform: uppercase; }
+.review-form input, .review-form select, .review-form textarea { display: block; width: 100%; margin-top: 9px; padding: 13px 0; border: 0; border-bottom: 1px solid #bdb7af; border-radius: 0; background: transparent; color: var(--ink); font-size: .9rem; outline: none; text-transform: none; transition: border-color .2s ease; }
+.review-form textarea { resize: vertical; }
+.review-form input:focus, .review-form select:focus, .review-form textarea:focus { border-color: var(--burgundy); box-shadow: 0 1px 0 var(--burgundy); }
+.review-honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.review-form .button { width: 100%; }
+
+.admin-page { background: var(--stone); }
+.admin-section { padding-block: 85px 115px; }
+.admin-layout { display: grid; grid-template-columns: 330px minmax(0, 1fr); gap: 28px; align-items: start; }
+.admin-card { border: 1px solid #d7cdc1; background: #fff; box-shadow: 0 16px 48px rgba(61,39,26,.07); }
+.admin-card--intro { position: sticky; top: 120px; padding: 32px; }
+.admin-card--intro > svg { width: 40px; height: 40px; margin-bottom: 22px; color: var(--gold); }
+.admin-card--intro h2, .admin-login h2, .admin-toolbar h2 { margin-bottom: 15px; font-size: 1.6rem; font-weight: 780; text-transform: uppercase; }
+.admin-card--intro p { color: var(--muted); font-size: .84rem; }
+.admin-panel { min-height: 360px; padding: 36px; }
+.admin-login { max-width: 430px; }
+.admin-login label { display: block; margin-bottom: 24px; color: #3d3936; font-size: .72rem; font-weight: 750; letter-spacing: .04em; text-transform: uppercase; }
+.admin-login input { display: block; width: 100%; margin-top: 9px; padding: 13px 0; border: 0; border-bottom: 1px solid #bdb7af; background: transparent; color: var(--ink); outline: none; }
+.admin-login input:focus { border-color: var(--burgundy); box-shadow: 0 1px 0 var(--burgundy); }
+.admin-toolbar { display: flex; align-items: flex-end; justify-content: space-between; gap: 25px; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #ded4c8; }
+.admin-toolbar .eyebrow { margin-bottom: 7px; }
+.admin-toolbar h2 { margin: 0; }
+.admin-actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: flex-end; }
+.button--muted { border-color: #bdb4aa; background: #eee7de; color: var(--ink); }
+.button--muted:hover { border-color: #a69b90; background: #e2d8cc; color: var(--ink); }
+.admin-message { margin: 0 0 18px; padding: 12px 14px; font-size: .78rem; }
+.admin-message--ok { background: #f0f7ef; color: #2e5e2a; }
+.admin-message--error { background: #fff1f0; color: #8c1f17; }
+.admin-review-list { display: grid; gap: 15px; }
+.admin-empty { margin: 0; padding: 24px; border: 1px dashed #cfc4b8; color: var(--muted); }
+.admin-review { display: grid; grid-template-columns: 1fr auto; gap: 22px; align-items: start; padding: 22px; border: 1px solid #e1d7cc; background: #fbf8f3; }
+.admin-stars { margin-bottom: 14px; }
+.admin-review h3 { margin-bottom: 8px; font-size: 1.05rem; color: var(--burgundy); }
+.admin-review p { margin-bottom: 12px; color: #574d45; font-size: .86rem; }
+.admin-review small { color: #837970; font-size: .68rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+.admin-delete { display: inline-flex; align-items: center; gap: 8px; min-height: 42px; padding-inline: 15px; border: 1px solid #8c1f17; background: #fff; color: #8c1f17; font-weight: 800; font-size: .72rem; text-transform: uppercase; cursor: pointer; }
+.admin-delete svg { width: 15px; }
+.admin-delete:hover { background: #8c1f17; color: #fff; }
+.admin-delete:disabled { opacity: .6; cursor: wait; }
+
 .faq { background: var(--stone); }
 .faq-grid { display: grid; grid-template-columns: .55fr 1fr; gap: 9vw; }
 .faq-intro { position: sticky; top: 125px; align-self: start; }
@@ -644,6 +698,20 @@ body { background: var(--stone); }
   .example-grid article, .example-grid article:first-child, .example-grid article:nth-child(3) { border-left: 1px solid #ded4c8; }
   .minimum-project { align-items: flex-start; flex-direction: column; }
   .included-layout ul { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 880px) {
+  .reviews-layout, .admin-layout { grid-template-columns: 1fr; }
+  .review-form, .admin-card--intro { position: static; }
+  .review-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 580px) {
+  .review-form, .admin-panel, .admin-card--intro { padding: 26px 20px; }
+  .review-form .field-row, .admin-toolbar, .admin-review { grid-template-columns: 1fr; }
+  .admin-toolbar { align-items: flex-start; }
+  .admin-actions { justify-content: flex-start; }
+  .admin-delete { justify-content: center; width: 100%; }
 }
 
 /* Legal pages */

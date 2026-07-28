@@ -17,6 +17,15 @@
           "value": "noindex, follow"
         }
       ]
+    },
+    {
+      "source": "/admin-reviews",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
     }
   ],
   "rewrites": [
