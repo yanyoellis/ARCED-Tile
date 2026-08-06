@@ -27,14 +27,14 @@ import { privacyPolicy, termsOfUse } from './legalContent.js'
 import { siteSeo, usePageSeo } from './seo.js'
 
 const services = [
-  { icon: Bath, title: 'Bathroom Tile Installation', copy: 'Complete bathroom tile work with clean transitions and carefully aligned finishes.' },
-  { icon: Grid2X2, title: 'Kitchen Tile Installation', copy: 'Durable, refined tile installations designed around your kitchen layout.' },
-  { icon: Sparkles, title: 'Backsplashes', copy: 'Precise backsplash installation that gives kitchens a polished focal point.' },
-  { icon: SquareStack, title: 'Floor Tile Installation', copy: 'Level, long-lasting tile floors for residential and commercial spaces.' },
-  { icon: Layers3, title: 'Wall Tile Installation', copy: 'Consistent wall layouts with crisp cuts, corners and grout lines.' },
-  { icon: Droplets, title: 'Shower Tile Installation', copy: 'Professional shower tile and waterproofing for a dependable finished system.' },
-  { icon: Hammer, title: 'Tile Removal', copy: 'Careful removal of old tile with responsible preparation for what comes next.' },
-  { icon: Wrench, title: 'Tile Replacement', copy: 'Targeted replacement of damaged or outdated tile for a renewed finish.' },
+  { icon: Bath, title: 'Bathroom Tile Installation', copy: 'Bathroom tile installation in Winnipeg with clean transitions, waterproof details and carefully aligned finishes.' },
+  { icon: Grid2X2, title: 'Kitchen Tile Installation', copy: 'Kitchen tile installation and backsplash work designed around cabinets, counters, outlets and daily use.' },
+  { icon: Sparkles, title: 'Backsplashes', copy: 'Kitchen backsplash installation in Winnipeg with crisp cuts, even grout lines and a polished focal point.' },
+  { icon: SquareStack, title: 'Floor Tile Installation', copy: 'Floor tile installation for ceramic, porcelain and large-format tile in residential and commercial spaces.' },
+  { icon: Layers3, title: 'Wall Tile Installation', copy: 'Wall tile installation for bathrooms, kitchens and feature walls with consistent layout and clean corners.' },
+  { icon: Droplets, title: 'Shower Tile Installation', copy: 'Shower tile installation and waterproofing for dependable tiled shower systems in Winnipeg homes.' },
+  { icon: Hammer, title: 'Tile Removal', copy: 'Old tile removal and surface preparation before new tile installation, repair or replacement.' },
+  { icon: Wrench, title: 'Tile Replacement', copy: 'Tile repair and replacement for cracked, loose, outdated or damaged bathroom, kitchen and floor tile.' },
   { icon: ShieldCheck, title: 'Waterproofing', copy: 'Purpose-built shower waterproofing before tile is installed.' },
   { icon: Bath, title: 'Residential Projects', copy: 'Thoughtful installation for Winnipeg homes, renovations and new spaces.' },
   { icon: Building2, title: 'Commercial Projects', copy: 'Reliable tile work for businesses and commercial properties.' },
@@ -83,13 +83,42 @@ const reviewProjectOptions = [
   'Commercial tile project',
 ]
 
+const searchServices = [
+  ['Floor Tile Installation Winnipeg', 'Ceramic, porcelain and large-format floor tile installation for homes, condos, offices and commercial interiors.'],
+  ['Bathroom Tile Winnipeg', 'Bathroom floors, walls, tub surrounds and shower tile installed with careful preparation and clean finishing.'],
+  ['Shower Tile & Waterproofing', 'Waterproofing, substrate checks, shower wall tile installation, grout, silicone and final cleanup.'],
+  ['Kitchen Backsplash Installation', 'Backsplashes for kitchens and renovation projects with outlet cuts, pattern alignment and crisp edges.'],
+  ['Tile Repair & Replacement', 'Replacement of cracked tile, loose tile, old tile removal and surface preparation before new installation.'],
+  ['Porcelain & Ceramic Tile Installer', 'Professional installation for porcelain tile, ceramic tile, mosaics and large-format tile layouts.'],
+]
+
+const serviceAreaKeywords = [
+  'Tile installation Winnipeg',
+  'Winnipeg tile contractor',
+  'Bathroom tile Winnipeg',
+  'Shower tile installation Winnipeg',
+  'Kitchen backsplash Winnipeg',
+  'Floor tile installation Winnipeg',
+  'Tile repair Winnipeg',
+  'Commercial tile installation',
+  'Winnipeg & surrounding areas',
+  'Headingley',
+  'Oak Bluff',
+  'East St. Paul',
+  'West St. Paul',
+]
+
 const faqs = [
-  ['Do you work only in Winnipeg?', 'ARCED is based in Winnipeg. For projects outside the city, share your location in the estimate form and we can confirm availability.'],
+  ['Do you work only in Winnipeg?', 'ARCED is based in Winnipeg and serves Winnipeg and surrounding areas. For projects in nearby communities such as Headingley, Oak Bluff, East St. Paul or West St. Paul, share your location in the estimate form and we can confirm availability.'],
   ['Do you remove old tile?', 'Yes. Old tile removal is available and can be included in the project estimate.'],
   ['Do you install shower tile?', 'Yes. We install shower tile and can provide the waterproofing required before tile installation.'],
   ['Do you provide materials?', 'Yes. ARCED can provide both labour and materials, depending on the needs of your project.'],
   ['Do you offer a warranty?', 'Yes. Our tile installation is backed by a two-year workmanship warranty.'],
   ['How is pricing calculated?', 'Pricing is based on the project area, tile type and pattern, site condition, preparation, removal requirements and material scope. A site inspection helps us provide a transparent estimate.'],
+  ['What tile installation services do you offer in Winnipeg?', 'ARCED provides floor tile installation, bathroom tile, shower tile, wall tile, kitchen backsplash installation, tile repair, tile replacement, old tile removal, waterproofing and commercial tile installation in Winnipeg.'],
+  ['Can you install porcelain, ceramic or large-format tile?', 'Yes. We install porcelain tile, ceramic tile, large-format tile and mosaic details. Large-format tile may require extra leveling, cutting and layout planning.'],
+  ['Can I get an estimate for tile installation near me?', 'Yes. Use the estimate form or tile cost calculator and include your Winnipeg address or neighborhood, square footage, tile type and photos if available.'],
+  ['Do you handle bathroom renovations and kitchen backsplash projects?', 'Yes. ARCED works on bathroom tile renovations, shower tile waterproofing, kitchen backsplashes, floor tile and wall tile projects for residential and commercial clients.'],
 ]
 
 const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT || ''
@@ -145,7 +174,7 @@ function Services() {
         <div className="featured-services-grid">
           {services.slice(0, 6).map(({ icon: Icon, title, copy }) => (
             <article className="service-card" key={title}>
-              <div className="service-image"><img src={serviceImages[title]} alt="" /></div>
+              <div className="service-image"><img src={serviceImages[title]} alt={`${title} in Winnipeg by ARCED Construction Group`} /></div>
               <div className="service-icon"><Icon strokeWidth={1.6} aria-hidden="true" /></div>
               <div className="service-content">
                 <h3>{title}</h3>
@@ -158,6 +187,36 @@ function Services() {
         <div className="additional-services" aria-label="Additional tile services">
           <p>More ways we can help</p>
           {services.slice(6).map(({ icon: Icon, title }) => <a href="#contact" key={title}><Icon aria-hidden="true" />{title}<ArrowRight aria-hidden="true" /></a>)}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function SearchCoverage() {
+  return (
+    <section className="section seo-coverage" aria-labelledby="tile-seo-title">
+      <div className="shell">
+        <div className="seo-coverage-layout">
+          <div className="seo-coverage-copy">
+            <p className="eyebrow">Winnipeg tile contractor</p>
+            <h2 id="tile-seo-title">Tile Installation in Winnipeg for Floors, Bathrooms, Showers & Backsplashes</h2>
+            <p>ARCED Construction Group LTD helps homeowners, builders and commercial clients who are looking for a reliable tile installer near me in Winnipeg. The work can include ceramic tile installation, porcelain tile installation, large-format tile, shower waterproofing, bathroom tile, kitchen backsplash tile and tile repair or replacement.</p>
+            <p>Every project starts with the condition of the surface, the layout, the tile type and the details that affect the final result: transitions, grout lines, corners, silicone, waterproofing and cleanup.</p>
+            <a className="text-link" href="/calculator">Estimate tile installation cost <ArrowRight aria-hidden="true" /></a>
+          </div>
+          <div className="seo-keyword-grid">
+            {searchServices.map(([title, copy]) => (
+              <article className="seo-keyword-card" key={title}>
+                <Check aria-hidden="true" />
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+        <div className="seo-area-strip" aria-label="Tile installation service keywords and areas">
+          {serviceAreaKeywords.map((keyword) => <span key={keyword}>{keyword}</span>)}
         </div>
       </div>
     </section>
@@ -379,6 +438,7 @@ function HomePage() {
       <SiteHeader />
       <Hero />
       <Services />
+      <SearchCoverage />
       <WhyUs />
       <Process />
       <Projects />
