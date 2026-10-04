@@ -9,7 +9,7 @@ function ContactBlock() {
       <strong>ARCED Construction Group LTD.</strong>
       <span>Winnipeg, Manitoba, Canada</span>
       <a href="tel:+14313385322"><Phone aria-hidden="true" />+1 (431) 338-5322</a>
-      <a href="mailto:arcedconstruction@outlook.com"><Mail aria-hidden="true" />arcedconstruction@outlook.com</a>
+      <a href="mailto:arcedconstructiongroup@outlook.com"><Mail aria-hidden="true" />arcedconstructiongroup@outlook.com</a>
     </address>
   )
 }

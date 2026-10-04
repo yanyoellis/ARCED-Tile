@@ -1,6 +1,6 @@
 const companyContact = {
   type: 'contact',
-  lines: ['ARCED Construction Group LTD.', 'Winnipeg, Manitoba, Canada', '+1 (431) 338-5322', 'arcedconstruction@outlook.com'],
+  lines: ['ARCED Construction Group LTD.', 'Winnipeg, Manitoba, Canada', '+1 (431) 338-5322', 'arcedconstructiongroup@outlook.com'],
 }
 
 const p = (text) => ({ type: 'paragraph', text })

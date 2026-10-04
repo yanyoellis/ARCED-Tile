@@ -363,7 +363,7 @@ function Contact() {
 
     if (!FORMSPREE_ENDPOINT) {
       setFormStatus('error')
-      setStatusMessage('The estimate form is being connected. Please email arcedconstruction@outlook.com or call +1 431 338-5322.')
+      setStatusMessage('The estimate form is being connected. Please email arcedconstructiongroup@outlook.com or call +1 431 338-5322.')
       return
     }
 
@@ -388,7 +388,7 @@ function Contact() {
       form.reset()
     } catch {
       setFormStatus('error')
-      setStatusMessage('Something went wrong while sending your request. Please email arcedconstruction@outlook.com or call +1 431 338-5322.')
+      setStatusMessage('Something went wrong while sending your request. Please email arcedconstructiongroup@outlook.com or call +1 431 338-5322.')
     }
   }
 
@@ -402,7 +402,7 @@ function Contact() {
           <div className="contact-details">
             <span><MapPin aria-hidden="true" /><span><small>Service area</small>Winnipeg, Manitoba</span></span>
             <a href="tel:+14313385322"><Phone aria-hidden="true" /><span><small>Call us</small>+1 431 338-5322</span></a>
-            <a href="mailto:arcedconstruction@outlook.com"><Mail aria-hidden="true" /><span><small>Email us</small>arcedconstruction@outlook.com</span></a>
+            <a href="mailto:arcedconstructiongroup@outlook.com"><Mail aria-hidden="true" /><span><small>Email us</small>arcedconstructiongroup@outlook.com</span></a>
             <span><ShieldCheck aria-hidden="true" /><span><small>Peace of mind</small>Fully insured · 2-year warranty</span></span>
           </div>
         </div>

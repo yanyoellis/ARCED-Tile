@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 const baseUrl = 'https://arcedtile.ca/'
 const siteName = 'ARCED Construction Group LTD'
 const phone = '+1 431 338-5322'
-const email = 'arcedconstruction@outlook.com'
+const email = 'arcedconstructiongroup@outlook.com'
 
 const tileKeywords = [
   'tile installation Winnipeg',
