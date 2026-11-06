@@ -81,7 +81,9 @@ https://arcedtile.ca
 
 ## Screenshots
 
-![ARCED Tile bathroom installation](https://raw.githubusercontent.com/yanyoellis/ARCED-Tile/main/public/assets/hero-bathroom.webp)
+The following screenshot was captured from the current production site.
+
+![ARCED Tile production homepage](docs/screenshots/homepage.png)
 
 ![ARCED Tile kitchen project](https://raw.githubusercontent.com/yanyoellis/ARCED-Tile/main/public/assets/project-kitchen.webp)
 
